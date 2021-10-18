@@ -1,13 +1,27 @@
 plugins {
     id "java"
     id "edu.wpi.first.GradleRIO" version "2021.1.2"
+    id 'checkstyle'
+}
+
+checkstyle {
+    toolVersion = '8.33'
+    configFile = file("${rootDir}/config/checkstyle/checkstyle.xml")
+    sourceSets = []
+}
+task Checkstyle(type: Checkstyle) {
+    dependsOn 'checkstyleMain'
+    source 'src/main/*'
+    // empty classpath
+    classpath = rootProject.files()
+
+    reports {
+        xml.enabled false
+        html.enabled false
+    }
 }
 
 repositories {
-    maven {
-                    url 'http://gregk.ca/FRCMocks/'
-                }
-
     maven {
          url 'http://gregk.ca/FRCMocks/'
     }
