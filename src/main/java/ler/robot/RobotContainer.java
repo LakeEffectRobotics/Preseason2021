@@ -15,14 +15,18 @@ import ler.robot.subsystems.Drivetrain;
  */
 public class RobotContainer {
 
-  /** The robot's drivetrain */
-  private final Drivetrain drivetrain = new Drivetrain(RobotMap.leftSpark1, RobotMap.rightSpark1);
+  /** The robot's drivetrain. */
+  private final Drivetrain drivetrain;
   
-
-  /** The container for the robot. Contains subsystems, OI devices, and commands. */
-  public RobotContainer() {
+  /** 
+   * The container for the robot. Contains subsystems, OI devices, and commands.
+   * @param robot The robot
+   */
+  public RobotContainer(Robot robot) {
+    // Create the drivetrain
+    drivetrain = new Drivetrain(robot.map.leftSpark1, robot.map.rightSpark1);
     // Drivetrain should run drivecommand if nothing else is using it
-    drivetrain.setDefaultCommand(new DriveCommand(drivetrain, OI.leftStickY, OI.rightStickY));
+    drivetrain.setDefaultCommand(new DriveCommand(drivetrain, robot.oi.leftStickY, robot.oi.rightStickY));
   }
 
 }

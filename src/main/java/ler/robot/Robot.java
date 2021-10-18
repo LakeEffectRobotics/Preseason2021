@@ -15,8 +15,9 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
  */
 public class Robot extends TimedRobot {
   
-  @SuppressWarnings("unused")
-  private RobotContainer container;
+  public RobotMap map = new RobotMap();
+  public OI oi = new OI();
+  public RobotContainer container;
 
 
   /**
@@ -27,8 +28,7 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
-    container = new RobotContainer();
-    OI.init();
+    container = new RobotContainer(this);
   }
 
   /**

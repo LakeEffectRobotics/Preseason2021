@@ -31,7 +31,7 @@ public class Drivetrain extends SubsystemBase  {
 	}
 
 	/**
-	 * Set the drivetrain output, using tank controls
+	 * Set the drivetrain output, using tank controls.
 	 * @param left left side output percent, [-1, 1]
 	 * @param right right side output percet, [-1, 1]
 	 */
@@ -41,7 +41,7 @@ public class Drivetrain extends SubsystemBase  {
 	}
 
 	/**
-	 * Stop the drivetrain
+	 * Stop the drivetrain.
 	 */
 	public void stop(){
 		leftLead.set(0);

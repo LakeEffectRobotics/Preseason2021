@@ -15,9 +15,9 @@ public class DriveCommand extends CommandBase  {
 	 */
 	Drivetrain drivetrain;
 
-	/** Left input value */
+	/** Left input value. */
 	DoubleSupplier leftInput;
-	/** Right input value */
+	/** Right input value. */
 	DoubleSupplier rightInput;
 
 	/**
