@@ -5,6 +5,7 @@
 package ler.robot;
 
 import ler.robot.commands.DriveCommand;
+import ler.robot.commands.DriveSlowCommand;
 import ler.robot.subsystems.Drivetrain;
 
 /**
@@ -27,6 +28,8 @@ public class RobotContainer {
     drivetrain = new Drivetrain(robot.map.leftSpark1, robot.map.rightSpark1);
     // Drivetrain should run drivecommand if nothing else is using it
     drivetrain.setDefaultCommand(new DriveCommand(drivetrain, robot.oi.leftStickY, robot.oi.rightStickY));
+    // When bumper is held, drive at 50% speed
+    robot.oi.leftBumper.whileHeld(new DriveSlowCommand(drivetrain, robot.oi.leftStickY, robot.oi.rightStickY, 0.5));
   }
 
 }

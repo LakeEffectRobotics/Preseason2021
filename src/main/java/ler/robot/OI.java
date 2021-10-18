@@ -40,7 +40,7 @@ public class OI {
 
     /**
      * Initialise controller mappings.
-    . */
+     */
     public OI(){
         // Map a command to A button
         buttonA.whenPressed(new PrintCommand("Button A pressed!"));
