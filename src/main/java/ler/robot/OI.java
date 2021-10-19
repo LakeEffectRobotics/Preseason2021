@@ -2,47 +2,54 @@ package ler.robot;
 
 import java.util.function.DoubleSupplier;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.XboxController.Button;
-import edu.wpi.first.wpilibj2.command.PrintCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
 /**
  * Class containing drive team input devices.
  */
 public class OI {
-    /** XBox controller on port 0. */
-    private static final int CONTROLLER = 0;
+    /**
+     * Controller bindings.
+     */
+    private static class Bindings {
+        static final int LEFT_STICK_PORT = 0;
+        static final int RIGHT_STICK_PORT = 1;
+        static final int CONTROLLER_PORT = 2;
 
-    /** XBox controller used to drive the robot. */
-    private final XboxController controller = new XboxController(CONTROLLER);
+        // Driver Bindings (Left stick)
+        static final int HALF_SPEED_BUTTON = 3;
+        
+        // Driver Bindings (Right stick)
+
+        // Operator Bindings
+        static final Button PRINT_BUTTON = Button.kA;
+    }
+
+    /* 
+     * Button names break conventions for constants, so disable check for now
+     * CHECKSTYLE OFF: ConstantNameCheck 
+     */
+
+    /** Joystick for left side of robot. Mapped to {@link Bindings#LEFT_STICK_PORT} */
+    private static final Joystick leftStick = new Joystick(Bindings.LEFT_STICK_PORT);
+    /** Joystick for right side of robot. Mapped to {@link Bindings#RIGHT_STICK_PORT} */
+    private static final Joystick rightStick = new Joystick(Bindings.RIGHT_STICK_PORT);
+    /** Xbox controller for operator controls. Mapped to {@link Bindings#CONTROLLER_PORT}*/
+    private static final XboxController controller = new XboxController(Bindings.CONTROLLER_PORT);
 
 
     /** Drive controller's left stick value. */
-    public final DoubleSupplier leftStickY = () -> controller.getY(Hand.kLeft);
+    public static final DoubleSupplier leftStickY = () -> leftStick.getY();
     /** Drive controller's right stick value. */
-    public final DoubleSupplier rightStickY = () -> controller.getY(Hand.kRight);
+    public static final DoubleSupplier rightStickY = () -> rightStick.getY();
 
-    /** Drive controller's A button. */
-    public final JoystickButton buttonA = new JoystickButton(controller, Button.kA.value);
-    /** Drive controller's B button. */
-    public final JoystickButton buttonB = new JoystickButton(controller, Button.kB.value);
-    /** Drive controller's X button. */
-    public final JoystickButton buttonX = new JoystickButton(controller, Button.kX.value);
-    /** Drive controller's Y button. */
-    public final JoystickButton buttonY = new JoystickButton(controller, Button.kY.value);
+    /** Button to drive at half speed. Mapped to {@link Bindings#HALF_SPEED_BUTTON} */
+    public static final JoystickButton halfSpeedButton = new JoystickButton(leftStick, Bindings.HALF_SPEED_BUTTON);
 
-    /** Drive controller's left bumper. */
-    public final JoystickButton leftBumper = new JoystickButton(controller, Button.kBumperLeft.value);
-    /** Drive controller's right bumper. */
-    public final JoystickButton rightBumper = new JoystickButton(controller, Button.kBumperRight.value);
+    /** Button to print a message (for demo purposes). Mapped to {@link Bindings#PRINT_BUTTON} */
+    public static final JoystickButton printButton = new JoystickButton(controller, Bindings.PRINT_BUTTON.value);
 
-    /**
-     * Initialise controller mappings.
-     */
-    public OI(){
-        // Map a command to A button
-        buttonA.whenPressed(new PrintCommand("Button A pressed!"));
-    }
 }

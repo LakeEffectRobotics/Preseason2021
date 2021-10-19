@@ -4,6 +4,7 @@
 
 package ler.robot;
 
+import edu.wpi.first.wpilibj2.command.PrintCommand;
 import ler.robot.commands.DriveCommand;
 import ler.robot.commands.DriveSlowCommand;
 import ler.robot.subsystems.Drivetrain;
@@ -20,16 +21,31 @@ public class RobotContainer {
   private final Drivetrain drivetrain;
   
   /** 
-   * The container for the robot. Contains subsystems, OI devices, and commands.
-   * @param robot The robot
+   * The container for the robot. Contains subsystems and commands.
    */
-  public RobotContainer(Robot robot) {
+  public RobotContainer() {
+    // Initialise hardware
+    RobotMap.init();
+
     // Create the drivetrain
-    drivetrain = new Drivetrain(robot.map.leftSpark1, robot.map.rightSpark1);
+    drivetrain = new Drivetrain(RobotMap.leftSpark1, RobotMap.rightSpark1);
     // Drivetrain should run drivecommand if nothing else is using it
-    drivetrain.setDefaultCommand(new DriveCommand(drivetrain, robot.oi.leftStickY, robot.oi.rightStickY));
+    drivetrain.setDefaultCommand(new DriveCommand(drivetrain, OI.leftStickY, OI.rightStickY));
+    
+
+    // Initialise button mappings
+    initMappings();
+  }
+
+  /**
+   * Initialise IO mappings.
+   */
+  private void initMappings(){
     // When bumper is held, drive at 50% speed
-    robot.oi.leftBumper.whileHeld(new DriveSlowCommand(drivetrain, robot.oi.leftStickY, robot.oi.rightStickY, 0.5));
+    OI.halfSpeedButton.whileHeld(new DriveSlowCommand(drivetrain, OI.leftStickY, OI.rightStickY, 0.5));
+
+    // When print button is pressed, print message
+    OI.printButton.whenPressed(new PrintCommand("Print button pressed!"));
   }
 
 }
