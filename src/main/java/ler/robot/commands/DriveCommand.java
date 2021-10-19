@@ -31,6 +31,8 @@ public class DriveCommand extends CommandBase  {
 		addRequirements(drivetrain);
 		
 		this.drivetrain = drivetrain;
+		this.leftInput = leftInput;
+		this.rightInput = rightInput;
 	}
 
 	/**

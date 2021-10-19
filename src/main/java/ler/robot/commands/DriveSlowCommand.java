@@ -35,6 +35,8 @@ public class DriveSlowCommand extends CommandBase  {
 		addRequirements(drivetrain);
 		
 		this.drivetrain = drivetrain;
+		this.leftInput = leftInput;
+		this.rightInput = rightInput;
 	}
 
 	/**

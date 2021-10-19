@@ -8,18 +8,18 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
  */
 public class RobotMap {
     /** CAN ID of left spark 1. */
-    private static final int LEFT_SPARK_1 = 0;
+    private static final int LEFT_SPARK_1 = 2;
     /** CAN ID of left spark 2. */
-    private static final int LEFT_SPARK_2 = 0;
+    private static final int LEFT_SPARK_2 = 3;
     /** CAN ID of left spark 3. */
-    private static final int LEFT_SPARK_3 = 0;
+    private static final int LEFT_SPARK_3 = 4;
     
     /** CAN ID of right spark 1. */
-    private static final int RIGHT_SPARK_1 = 0;
+    private static final int RIGHT_SPARK_1 = 5;
     /** CAN ID of right spark 2. */
-    private static final int RIGHT_SPARK_2 = 0;
+    private static final int RIGHT_SPARK_2 = 6;
     /** CAN ID of right spark 3. */
-    private static final int RIGHT_SPARK_3 = 0;
+    private static final int RIGHT_SPARK_3 = 7;
         
     /** Primary SparkMax on left side. */
     public final CANSparkMax leftSpark1 = new CANSparkMax(LEFT_SPARK_1, MotorType.kBrushless);
