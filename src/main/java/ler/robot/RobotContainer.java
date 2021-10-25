@@ -18,7 +18,7 @@ import ler.robot.subsystems.Drivetrain;
 public class RobotContainer {
 
   /** The robot's drivetrain. */
-  private final Drivetrain drivetrain;
+  private Drivetrain drivetrain;
   
   /** 
    * The container for the robot. Contains subsystems and commands.
@@ -28,9 +28,7 @@ public class RobotContainer {
     RobotMap.init();
 
     // Create the drivetrain
-    drivetrain = new Drivetrain(RobotMap.leftTalon1, RobotMap.rightTalon1);
-    // Drivetrain should run drivecommand if nothing else is using it
-    drivetrain.setDefaultCommand(new DriveCommand(drivetrain, OI.leftStickY, OI.rightStickY));
+    drivetrain = new Drivetrain(RobotMap.leftTalon1, RobotMap.rightTalon1, new DriveCommand(drivetrain, OI.leftStickY, OI.rightStickY));
     
 
     // Initialise button mappings

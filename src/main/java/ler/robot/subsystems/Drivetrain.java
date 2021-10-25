@@ -1,5 +1,6 @@
 package ler.robot.subsystems;
 
+import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
@@ -29,6 +30,19 @@ public class Drivetrain extends SubsystemBase  {
 	public Drivetrain(TalonSRX leftLead, TalonSRX rightLead) {
 		this.leftLead = leftLead;
 		this.rightLead = rightLead;
+	}
+
+	/**
+	 * Create a new Drivetrain.
+	 * 
+	 * @param leftLead Lead Spark Max on left side
+	 * @param rightLead Lead Spark Max on right side
+	 * @param defaultCommand Default command
+	 */
+	public Drivetrain(TalonSRX leftLead, TalonSRX rightLead, Command defaultCommand){
+		this(leftLead, rightLead);
+
+		setDefaultCommand(defaultCommand);
 	}
 
 	/**
