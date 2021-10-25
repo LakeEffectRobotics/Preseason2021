@@ -19,6 +19,11 @@ public class RobotMap {
         private static final int RIGHT_TALON_1 = 5;
         /** CAN ID of right talon 2. */
         private static final int RIGHT_TALON_2 = 6;
+
+        /** CAN ID of shooter talon 1. */
+        private static final int SHOOTER_TALON_1 = -1;
+        /** CAN ID of shooter talon 2. */
+        private static final int SHOOTER_TALON_2 = -1;
     }
     
     /* 
@@ -35,6 +40,11 @@ public class RobotMap {
     public static final TalonSRX rightTalon1 = new TalonSRX(CAN.RIGHT_TALON_1);
     /** TalonSRX on right side, following {@link #rightTalon1}. */
     public static final TalonSRX rightTalon2 = new TalonSRX(CAN.RIGHT_TALON_2);
+
+    /** First TalonSRX on the shooter prototype. */
+    public static final TalonSRX shooterTalon1 = new TalonSRX(CAN.SHOOTER_TALON_1);
+    /** Second TalonSRX on the shooter prototype. */
+    public static final TalonSRX shooterTalon2 = new TalonSRX(CAN.SHOOTER_TALON_2);
 
     /**
      * Initialise robot hardware. <br/>

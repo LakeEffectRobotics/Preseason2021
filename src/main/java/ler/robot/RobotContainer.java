@@ -7,7 +7,9 @@ package ler.robot;
 import edu.wpi.first.wpilibj2.command.PrintCommand;
 import ler.robot.commands.DriveCommand;
 import ler.robot.commands.DriveSlowCommand;
+import ler.robot.commands.ShootCommand;
 import ler.robot.subsystems.Drivetrain;
+import ler.robot.subsystems.Shooter;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -20,6 +22,9 @@ public class RobotContainer {
   /** The robot's drivetrain. */
   private Drivetrain drivetrain;
   
+  /** The prototype shooter. */
+  private Shooter shooter;
+
   /** 
    * The container for the robot. Contains subsystems and commands.
    */
@@ -29,7 +34,7 @@ public class RobotContainer {
 
     // Create the drivetrain
     drivetrain = new Drivetrain(RobotMap.leftTalon1, RobotMap.rightTalon1, new DriveCommand(drivetrain, OI.leftStickY, OI.rightStickY));
-    
+    shooter = new Shooter(RobotMap.shooterTalon1, RobotMap.shooterTalon2);
 
     // Initialise button mappings
     initMappings();
@@ -44,6 +49,8 @@ public class RobotContainer {
 
     // When print button is pressed, print message
     OI.printButton.whenPressed(new PrintCommand("Print button pressed!"));
+    // While shoot button is held run shoot command
+    OI.shootButton.whileHeld(new ShootCommand(shooter));
   }
 
 }
