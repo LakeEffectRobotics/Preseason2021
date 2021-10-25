@@ -4,6 +4,8 @@ This codebase serves as a starting point for developing your own robot code
 
 It contains enough code that with some minor configuration you should be able to get a robot driving out of the box.
 
+There is also a subsystem for you to use with your shooter prototype, and a command that is bound to the left bumper. If you want more subsystems or commands you are free to create them.
+
 ## Structure
 The code has the following structure
 ```
