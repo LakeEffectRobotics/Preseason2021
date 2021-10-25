@@ -28,7 +28,7 @@ public class RobotContainer {
     RobotMap.init();
 
     // Create the drivetrain
-    drivetrain = new Drivetrain(RobotMap.leftSpark1, RobotMap.rightSpark1);
+    drivetrain = new Drivetrain(RobotMap.leftTalon1, RobotMap.rightTalon1);
     // Drivetrain should run drivecommand if nothing else is using it
     drivetrain.setDefaultCommand(new DriveCommand(drivetrain, OI.leftStickY, OI.rightStickY));
     

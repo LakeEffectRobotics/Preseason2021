@@ -6,7 +6,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
-import ca.gregk.frcmocks.rev.MockCANSparkMax;
+import ca.gregk.frcmocks.ctre.MockTalonSRX;
 
 /**
  * Test class for Drivetrain.
@@ -16,11 +16,11 @@ public class DrivetrainTest  {
 	/**
 	 * Lead Spark Max on left side.
 	 */
-	private MockCANSparkMax leftLead;
+	private MockTalonSRX leftLead;
 	/**
 	 * Lead Spark Max on right side.
 	 */
-	private MockCANSparkMax rightLead;
+	private MockTalonSRX rightLead;
 	private Drivetrain drivetrain;
 
 
@@ -30,8 +30,8 @@ public class DrivetrainTest  {
 	@Before
 	public void setup() {
 		// Create mocks for required hardware
-		leftLead = new MockCANSparkMax();
-		rightLead = new MockCANSparkMax();
+		leftLead = new MockTalonSRX();
+		rightLead = new MockTalonSRX();
 		
 		// Create subsytem instance
 		drivetrain = new Drivetrain(leftLead.getMock(), rightLead.getMock());
