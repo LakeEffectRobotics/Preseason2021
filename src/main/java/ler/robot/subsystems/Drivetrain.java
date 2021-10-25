@@ -12,11 +12,11 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 public class Drivetrain extends SubsystemBase  {
 
 	/**
-	 * Lead Spark Max on left side.
+	 * Lead TalonSRX on left side.
 	 */
 	TalonSRX leftLead;
 	/**
-	 * Lead Spark Max on right side.
+	 * Lead TalonSRX on right side.
 	 */
 	TalonSRX rightLead;
 
@@ -24,8 +24,8 @@ public class Drivetrain extends SubsystemBase  {
 	/**
 	 * Create a new Drivetrain.
 	 * 
-	 * @param leftLead Lead Spark Max on left side
-	 * @param rightLead Lead Spark Max on right side
+	 * @param leftLead Lead TalonSRX on left side
+	 * @param rightLead Lead TalonSRX on right side
 	 */
 	public Drivetrain(TalonSRX leftLead, TalonSRX rightLead) {
 		this.leftLead = leftLead;
@@ -35,8 +35,8 @@ public class Drivetrain extends SubsystemBase  {
 	/**
 	 * Create a new Drivetrain.
 	 * 
-	 * @param leftLead Lead Spark Max on left side
-	 * @param rightLead Lead Spark Max on right side
+	 * @param leftLead Lead TalonSRX on left side
+	 * @param rightLead Lead TalonSRX on right side
 	 * @param defaultCommand Default command
 	 */
 	public Drivetrain(TalonSRX leftLead, TalonSRX rightLead, Command defaultCommand){
