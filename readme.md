@@ -10,25 +10,20 @@ There is also a subsystem for you to use with your shooter prototype, and a comm
 The code has the following structure
 ```
 src
-├── main                                - Robot code folder
-│   ├── deploy                          - Anything in this folder is deployed to RIO memory
-│   │   └── example.txt        
-│   └── java/ler/robot
-│       ├── commands                    - Folder for commands
-│       │   ├── DriveCommand.java
-│       │   └── DriveSlowCommand.java
-│       ├── subsystems                  - Folder for subsystems
-│       │   └── Drivetrain.java
-│       ├── Main.java
-│       ├── OI.java                     - Controller mappings
-│       ├── Robot.java
-│       ├── RobotContainer.java         - Subsytem and command initialisation
-│       └── RobotMap.java               - Hardware mappings
-└── test                                - Testing code folder
+└── main                                - Robot code folder
+    ├── deploy                          - Anything in this folder is deployed to RIO memory
+    │   └── example.txt        
     └── java/ler/robot
-        ├── commands                    - Test code for commands
-        │   ├── DriveCommandTest.java
-        │   └── DriveSlowCommandTest.java
-        └── subsystems                  - Test code for subsystems
-            └── DrivetrainTest.java
+        ├── commands                    - Folder for commands
+        │   ├── DriveCommand.java
+        │   ├── DriveSlowCommand.java
+        │   └── ShootCommand.java
+        ├── subsystems                  - Folder for subsystems
+        │   ├── Drivetrain.java
+        │   └── Shooter.java
+        ├── Main.java
+        ├── OI.java                     - Controller mappings
+        ├── Robot.java
+        ├── RobotContainer.java         - Subsytem and command initialisation
+        └── RobotMap.java               - Hardware mappings
 ```
