@@ -1,0 +1,86 @@
+Compiled from "RobotMap.java"
+public class ler.robot.RobotMap {
+  public final com.revrobotics.CANSparkMax leftSpark1;
+
+  public final com.revrobotics.CANSparkMax leftSpark2;
+
+  public final com.revrobotics.CANSparkMax leftSpark3;
+
+  public final com.revrobotics.CANSparkMax rightSpark1;
+
+  public final com.revrobotics.CANSparkMax rightSpark2;
+
+  public final com.revrobotics.CANSparkMax rightSpark3;
+
+  public ler.robot.RobotMap();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: new           #2                  // class com/revrobotics/CANSparkMax
+       8: dup
+       9: iconst_0
+      10: getstatic     #4                  // Field com/revrobotics/CANSparkMaxLowLevel$MotorType.kBrushless:Lcom/revrobotics/CANSparkMaxLowLevel$MotorType;
+      13: invokespecial #5                  // Method com/revrobotics/CANSparkMax."<init>":(ILcom/revrobotics/CANSparkMaxLowLevel$MotorType;)V
+      16: putfield      #6                  // Field leftSpark1:Lcom/revrobotics/CANSparkMax;
+      19: aload_0
+      20: new           #2                  // class com/revrobotics/CANSparkMax
+      23: dup
+      24: bipush        7
+      26: getstatic     #4                  // Field com/revrobotics/CANSparkMaxLowLevel$MotorType.kBrushless:Lcom/revrobotics/CANSparkMaxLowLevel$MotorType;
+      29: invokespecial #5                  // Method com/revrobotics/CANSparkMax."<init>":(ILcom/revrobotics/CANSparkMaxLowLevel$MotorType;)V
+      32: putfield      #7                  // Field leftSpark2:Lcom/revrobotics/CANSparkMax;
+      35: aload_0
+      36: new           #2                  // class com/revrobotics/CANSparkMax
+      39: dup
+      40: bipush        15
+      42: getstatic     #4                  // Field com/revrobotics/CANSparkMaxLowLevel$MotorType.kBrushless:Lcom/revrobotics/CANSparkMaxLowLevel$MotorType;
+      45: invokespecial #5                  // Method com/revrobotics/CANSparkMax."<init>":(ILcom/revrobotics/CANSparkMaxLowLevel$MotorType;)V
+      48: putfield      #8                  // Field leftSpark3:Lcom/revrobotics/CANSparkMax;
+      51: aload_0
+      52: new           #2                  // class com/revrobotics/CANSparkMax
+      55: dup
+      56: iconst_0
+      57: getstatic     #4                  // Field com/revrobotics/CANSparkMaxLowLevel$MotorType.kBrushless:Lcom/revrobotics/CANSparkMaxLowLevel$MotorType;
+      60: invokespecial #5                  // Method com/revrobotics/CANSparkMax."<init>":(ILcom/revrobotics/CANSparkMaxLowLevel$MotorType;)V
+      63: putfield      #9                  // Field rightSpark1:Lcom/revrobotics/CANSparkMax;
+      66: aload_0
+      67: new           #2                  // class com/revrobotics/CANSparkMax
+      70: dup
+      71: iconst_0
+      72: getstatic     #4                  // Field com/revrobotics/CANSparkMaxLowLevel$MotorType.kBrushless:Lcom/revrobotics/CANSparkMaxLowLevel$MotorType;
+      75: invokespecial #5                  // Method com/revrobotics/CANSparkMax."<init>":(ILcom/revrobotics/CANSparkMaxLowLevel$MotorType;)V
+      78: putfield      #10                 // Field rightSpark2:Lcom/revrobotics/CANSparkMax;
+      81: aload_0
+      82: new           #2                  // class com/revrobotics/CANSparkMax
+      85: dup
+      86: iconst_0
+      87: getstatic     #4                  // Field com/revrobotics/CANSparkMaxLowLevel$MotorType.kBrushless:Lcom/revrobotics/CANSparkMaxLowLevel$MotorType;
+      90: invokespecial #5                  // Method com/revrobotics/CANSparkMax."<init>":(ILcom/revrobotics/CANSparkMaxLowLevel$MotorType;)V
+      93: putfield      #11                 // Field rightSpark3:Lcom/revrobotics/CANSparkMax;
+      96: aload_0
+      97: getfield      #7                  // Field leftSpark2:Lcom/revrobotics/CANSparkMax;
+     100: aload_0
+     101: getfield      #6                  // Field leftSpark1:Lcom/revrobotics/CANSparkMax;
+     104: invokevirtual #12                 // Method com/revrobotics/CANSparkMax.follow:(Lcom/revrobotics/CANSparkMax;)Lcom/revrobotics/CANError;
+     107: pop
+     108: aload_0
+     109: getfield      #8                  // Field leftSpark3:Lcom/revrobotics/CANSparkMax;
+     112: aload_0
+     113: getfield      #6                  // Field leftSpark1:Lcom/revrobotics/CANSparkMax;
+     116: invokevirtual #12                 // Method com/revrobotics/CANSparkMax.follow:(Lcom/revrobotics/CANSparkMax;)Lcom/revrobotics/CANError;
+     119: pop
+     120: aload_0
+     121: getfield      #10                 // Field rightSpark2:Lcom/revrobotics/CANSparkMax;
+     124: aload_0
+     125: getfield      #9                  // Field rightSpark1:Lcom/revrobotics/CANSparkMax;
+     128: invokevirtual #12                 // Method com/revrobotics/CANSparkMax.follow:(Lcom/revrobotics/CANSparkMax;)Lcom/revrobotics/CANError;
+     131: pop
+     132: aload_0
+     133: getfield      #11                 // Field rightSpark3:Lcom/revrobotics/CANSparkMax;
+     136: aload_0
+     137: getfield      #9                  // Field rightSpark1:Lcom/revrobotics/CANSparkMax;
+     140: invokevirtual #12                 // Method com/revrobotics/CANSparkMax.follow:(Lcom/revrobotics/CANSparkMax;)Lcom/revrobotics/CANError;
+     143: pop
+     144: return
+}

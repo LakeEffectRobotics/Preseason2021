@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="8.33">
+<file name="C:\Users\Greg\Documents\Workspaces\Robocode\Training\src\main\java\ler\robot\Main.java">
+</file>
+<file name="C:\Users\Greg\Documents\Workspaces\Robocode\Training\src\main\java\ler\robot\OI.java">
+</file>
+<file name="C:\Users\Greg\Documents\Workspaces\Robocode\Training\src\main\java\ler\robot\Robot.java">
+</file>
+<file name="C:\Users\Greg\Documents\Workspaces\Robocode\Training\src\main\java\ler\robot\RobotContainer.java">
+</file>
+<file name="C:\Users\Greg\Documents\Workspaces\Robocode\Training\src\main\java\ler\robot\RobotMap.java">
+</file>
+<file name="C:\Users\Greg\Documents\Workspaces\Robocode\Training\src\main\java\ler\robot\commands\DriveCommand.java">
+</file>
+<file name="C:\Users\Greg\Documents\Workspaces\Robocode\Training\src\main\java\ler\robot\subsystems\Drivetrain.java">
+</file>
+</checkstyle>

@@ -1,0 +1,9 @@
+{
+    "recommendations": [
+        "vscjava.vscode-java-pack",
+        "wpilibsuite.vscode-wpilib",
+        "naco-siren.gradle-language",
+        "shengchen.vscode-checkstyle",
+        "gregk.botbuilder",
+    ]
+}

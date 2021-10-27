@@ -1,0 +1,240 @@
+<?xml version="1.0"?>
+<!DOCTYPE module PUBLIC
+          "-//Checkstyle//DTD Checkstyle Configuration 1.3//EN"
+          "https://checkstyle.org/dtds/configuration_1_3.dtd">
+
+<module name="Checker">
+    <!-- <property name="basedir" value="src/main/java/ler/robot"> -->
+    <property name="fileExtensions" value="java"/>
+    <property name="severity" value="error"/>
+    <module name="TreeWalker">
+        <module name="SuppressionCommentFilter">
+            <property name="offCommentFormat" value="CHECKSTYLE OFF\: ([\w\|]+)"/>
+            <property name="onCommentFormat" value="CHECKSTYLE ON\: ([\w\|]+)"/>
+            <property name="checkFormat" value="$1"/>
+        </module>
+
+        <!-- Annotations -->
+            <!-- Prevent same-line annotations -->
+            <module name="AnnotationLocation">
+                <property name="allowSamelineMultipleAnnotations" value="false"/>
+                <property name="allowSamelineSingleParameterlessAnnotation" value="false"/>
+                <property name="allowSamelineParameterizedAnnotation" value="false"/>
+            </module>
+        
+        <!-- Blocks -->
+            <!-- Warn about sub-blocks -->
+            <module name="AvoidNestedBlocks">
+                <property name="severity" value="warning"/>
+            </module>
+            <!-- Require statements to have curly brackets unless on one line, prevents ambiguity-->
+            <module name="NeedBraces">
+                <property name="allowSingleLineStatement" value="true"/>
+            </module>
+            <!-- Open curly brackets on same line -->
+            <module name="LeftCurly">
+                <property name="ignoreEnums" value="false"/>
+            </module>
+            <!-- Close curly brackets on newline (unless single line) -->
+            <module name="RightCurly"/>
+
+        <!-- General practices -->
+            <!-- Ensure declarations are in a resonable order. See:https://checkstyle.sourceforge.io/config_coding.html#DeclarationOrder -->
+            <module name="DeclarationOrder">
+                <property name="ignoreModifiers" value="true"/>
+                <property name="severity" value="warning"/>
+            </module>
+            <!-- Ensure default is last option in switch -->
+            <module name="DefaultComesLast">
+                <property name="severity" value="warning"/>
+            </module>
+            <!-- Prevent accidental if(cond); statements -->
+            <module name="EmptyStatement">
+                <property name="severity" value="warning"/>
+            </module>
+            <!-- Prevent accidental fogotten break; statements. Can be overidden by "fallthrough" comment-->
+            <module name="FallThrough"/>
+            <!-- Require lowercase x and b in hex/bin numbers -->
+            <module name="IllegalTokenText">
+                <property name="tokens" value="NUM_INT,NUM_LONG"/>
+                <property name="format" value="^0[XB]\w*"/>
+                <property name="message" value="Use lowercase x/b in hex/binary"/>
+            </module>
+            <!-- Prevent accidental assignment instead of equality -->
+            <module name="InnerAssignment"/>
+            <!-- Enforce constants to define values. see:https://checkstyle.sourceforge.io/config_coding.html#MagicNumber -->
+            <!-- This may need to be removed -->
+            <module name="MagicNumber">
+                <property name="severity" value="warning"/>
+                <property name="ignoreNumbers" value="-360,-2,-1,-0.5,-0.25,0,0.25,0.5,1,2,360"/>
+                <property name="ignoreFieldDeclaration" value="true"/>
+                <message key="magic.number" value="''{0}'' is a magic number, and should have a dedicated constant."/>
+            </module>
+            <!-- Prevent the same string being used 3 times without a dedicated variable -->
+            <module name="MultipleStringLiterals">
+                <property name="allowedDuplicates" value="2"/>
+                <property name="ignoreStringsRegexp" value='^"\\[tn]"$'/>
+                <property name="severity" value="warning"/>
+            </module>
+            <!-- Enforce one statement per line -->
+            <module name="OneStatementPerLine"/>
+            <!-- Keep overloads are together -->
+            <module name="OverloadMethodsDeclarationOrder"/>
+            <!-- Keep boolean logic simple -->
+            <module name="SimplifyBooleanExpression"/>
+            <!-- Enforce .equals() instead of == for strings -->
+            <module name="StringLiteralEquality"/>
+            <!-- Remove semicolon after closed curly brace -->
+            <module name="UnnecessarySemicolonAfterOuterTypeDeclaration"/>
+            <module name="UnnecessarySemicolonAfterTypeMemberDeclaration"/>
+            <!-- Remove semicolon in enum -->
+            <module name="UnnecessarySemicolonInEnumeration"/>
+        
+        <!-- Imports -->
+            <!-- Prevent redundant imports -->
+            <module name="RedundantImport">
+                <property name="severity" value="warning"/>
+            </module>
+
+        <!-- Javadoc -->
+            <!-- Enforce consistend tag order, may be cancelled by function annotations -->
+            <module name="AtclauseOrder"/>
+            <!-- Ensure javadoc is in a valid position -->
+            <module name="InvalidJavadocPosition"/>
+            <!-- Ensure tags have own line -->
+            <module name="JavadocBlockTagLocation"/>
+            <!-- Ensure multiline javadoc starts on second line -->
+            <module name="JavadocContentLocationCheck"/>
+            <!-- Ensure whitespace after asterix -->
+            <module name="JavadocMissingWhitespaceAfterAsterisk"/>
+            <!-- Various minor grammatical checks (notably punctuation) -->
+            <module name="JavadocStyle">
+                <!-- <property name="endOfScenteceFormat" value="(^(\w*\W?){1,3}$)?(([.?!][ \t\n\r\f<])|([.?!]$))?"/> -->
+                <property name="severity" value="warning"/>
+            </module>
+            <!-- Ensure correct indentaion and closed tags -->
+            <module name="JavadocTagContinuationIndentation">
+                <!-- <property name="violateExecutionOnNonTightHtml" value="true"/> -->
+            </module>
+            <!-- Ensure that methods (barring overrides and set/get) have javadoc -->
+            <module name="MissingJavadocMethod">
+                <property name="scope" value="private"/>
+                <property name="allowMissingPropertyJavadoc" value="true"/>
+            </module>
+            <!-- Ensure methods have complete javadoc -->
+            <module name="JavadocMethod"/>
+            <!-- Ensure classes/enums have javadoc -->
+            <module name="MissingJavadocType">
+                <property name="scope" value="private"/>
+            </module>
+            <!-- Warn about blank @clauses -->
+            <module name="NonEmptyAtclauseDescription">
+                <property name="severity" value="warning"/>
+            </module>
+            <!-- Warn about multiline javadoc that could be single line -->
+            <module name="SingleLineJavadoc"/>
+
+        <!-- Miscellaneous -->
+            <!-- Array [] positioning -->
+            <module name="ArrayTypeStyle"/>
+            <!-- Warn against use of unicode escapes instead of caharters (unless trailing comment) -->
+            <module name="AvoidEscapedUnicodeCharacters">
+                <property name="allowEscapesForControlCharacters" value="true"/>
+                <property name="allowByTailComment" value="true"/>
+                <property name="severity" value="warning"/>
+            </module>
+            <!-- Keep comment indentation level with code -->
+            <module name="CommentsIndentation"/>
+        
+        <!-- Modifiers -->
+            <!-- Ensure consistent modifier order -->
+            <module name="ModifierOrder"/>
+
+        <!-- Naming -->
+            <!-- Ensure catch variables are named either e# or t# (for exeption or throwable) -->
+            <module name="CatchParameterName">
+                <property name="format" value="^[et]\d*"/>
+                <message key="name.invalidPattern" value="Exception variable should be e or t, opt. followed by a number"/>
+            </module>
+            <!-- Ensure constants are CAPITAL_CASE (allows for lower k at start)-->
+            <module name="ConstantName">
+                <property name="format" value="^[A-Zk][_A-Z0-9]*$"/>
+                <message key="name.invalidPattern" value="Constants should be CAPITAL_CASE"/>
+            </module>
+            <module name="LocalFinalVariableName">
+                <property name="format" value="^[A-Zk][_A-Z0-9]*$"/>
+                <message key="name.invalidPattern" value="Constants should be CAPITAL_CASE"/>
+            </module>
+            <!-- Ensure variables are camelCase -->
+            <module name="LocalVariableName">
+                <message key="name.invalidPattern" value="Variables should be camelCase"/>
+            </module>
+            <module name="MemberName"> <!-- This also applies to final members, IDK how to fix-->
+                <message key="name.invalidPattern" value="Variables should be camelCase"/>
+            </module>
+            <module name="StaticVariableName">
+                <message key="name.invalidPattern" value="Variables should be camelCase"/>
+            </module>
+            <!-- Ensure functions are camelCase -->
+            <module name="MethodName">
+                <message key="name.invalidPattern" value="Functions should be camelCase"/>
+            </module>
+            <!-- Ensure function parameters are camelCase -->
+            <module name="ParameterName">
+                <message key="name.invalidPattern" value="Parameters should be camelCase"/>
+            </module>
+            <!-- Ensure class names are UpperCamelCase -->
+            <module name="TypeName">
+                <message key="name.invalidPattern" value="Classes should be UpperCamelCase"/>
+            </module>
+
+        <!-- Whitespace -->
+            <!-- Require line spacing between things -->
+            <module name="EmptyLineSeparator">
+                <property name="allowNoEmptyLineBetweenFields" value="true"/>
+                <message key="empty.line.separator" value="This should be separated from the above statement by a newline"/>
+            </module>
+            <!-- Require no space between function name and () -->
+            <module name="MethodParamPad">
+                <!-- <property name="severity" value="warning"/> -->
+            </module>
+            <!-- Reduce whitespace around tokens -->
+            <module name="NoWhitespaceBefore">
+                <property name="severity" value="warning"/>
+            </module>
+            <!-- Prevent excess padding around parentheses -->
+            <module name="ParenPad">
+                <property name="severity" value="warning"/>
+            </module>
+            <module name="TypecastParenPad"/>
+            <!-- Keep commas on same line -->
+            <module name="SeparatorWrap">
+                <property name="tokens" value="COMMA"/>
+            </module>
+            <!-- Ensure brackets adjacent to if/for/while/catch -->
+            <module name="RegexpSinglelineJava">
+                <property name="format" value="(if|for|while|catch) +\(.*\) *\{"/>
+                <property name="ignoreComments" value="true"/>
+                <property name="message" value="Remove space before open bracket"/>
+            </module>
+            <!-- Ensure brackets adjacent to if/for/while/catch -->
+            <module name="RegexpSinglelineJava">
+                <property name="format" value="(if|for|while|catch) *\(.*\) +\{"/>
+                <property name="ignoreComments" value="true"/>
+                <property name="message" value="Remove space before curly brace"/>
+            </module>
+            <!-- Ensure space before else -->
+            <module name="RegexpSinglelineJava">
+                <property name="format" value="}else"/>
+                <property name="ignoreComments" value="true"/>
+                <property name="message" value="Add space before else"/>
+            </module>
+            <!-- Ensure space after else -->
+            <module name="RegexpSinglelineJava">
+                <property name="format" value="else\{"/>
+                <property name="ignoreComments" value="true"/>
+                <property name="message" value="Add space after else"/>
+            </module>
+
+    </module>
+</module>
