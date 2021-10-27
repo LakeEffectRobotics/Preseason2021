@@ -1,7 +1,6 @@
 package ler.robot;
 
-import com.revrobotics.CANSparkMax;
-import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 /**
  * Map of hardware on robot.
@@ -11,19 +10,20 @@ public class RobotMap {
      * Inner class to hold CAN ID constants.
      */
     private class CAN {
-        /** CAN ID of left spark 1. */
-        private static final int LEFT_SPARK_1 = 2;
-        /** CAN ID of left spark 2. */
-        private static final int LEFT_SPARK_2 = 3;
-        /** CAN ID of left spark 3. */
-        private static final int LEFT_SPARK_3 = 4;
+        /** CAN ID of left talon 1. */
+        private static final int LEFT_TALON_1 = 2;
+        /** CAN ID of left talon 2. */
+        private static final int LEFT_TALON_2 = 3;
         
-        /** CAN ID of right spark 1. */
-        private static final int RIGHT_SPARK_1 = 5;
-        /** CAN ID of right spark 2. */
-        private static final int RIGHT_SPARK_2 = 6;
-        /** CAN ID of right spark 3. */
-        private static final int RIGHT_SPARK_3 = 7;
+        /** CAN ID of right talon 1. */
+        private static final int RIGHT_TALON_1 = 5;
+        /** CAN ID of right talon 2. */
+        private static final int RIGHT_TALON_2 = 6;
+
+        /** CAN ID of shooter talon 1. */
+        private static final int SHOOTER_TALON_1 = -1;
+        /** CAN ID of shooter talon 2. */
+        private static final int SHOOTER_TALON_2 = -1;
     }
     
     /* 
@@ -31,19 +31,20 @@ public class RobotMap {
      * CHECKSTYLE OFF: ConstantNameCheck 
      */
 
-    /** Primary SparkMax on left side. */
-    public static final CANSparkMax leftSpark1 = new CANSparkMax(CAN.LEFT_SPARK_1, MotorType.kBrushless);
-    /** SparkMax on left side, following {@link #leftSpark1}. */
-    public static final CANSparkMax leftSpark2 = new CANSparkMax(CAN.LEFT_SPARK_2, MotorType.kBrushless);
-    /** SparkMax on left side, following {@link #leftSpark1}. */
-    public static final CANSparkMax leftSpark3 = new CANSparkMax(CAN.LEFT_SPARK_3, MotorType.kBrushless);
+    /** Primary TalonSRX on left side. */
+    public static final TalonSRX leftTalon1 = new TalonSRX(CAN.LEFT_TALON_1);
+    /** TalonSRX on left side, following {@link #leftTalon1}. */
+    public static final TalonSRX leftTalon2 = new TalonSRX(CAN.LEFT_TALON_2);
     
-    /** Primary SparkMax on right side. */
-    public static final CANSparkMax rightSpark1 = new CANSparkMax(CAN.RIGHT_SPARK_1, MotorType.kBrushless);
-    /** SparkMax on right side, following {@link #rightSpark1}. */
-    public static final CANSparkMax rightSpark2 = new CANSparkMax(CAN.RIGHT_SPARK_2, MotorType.kBrushless);
-    /** SparkMax on right side, following {@link #rightSpark1}. */
-    public static final CANSparkMax rightSpark3 = new CANSparkMax(CAN.RIGHT_SPARK_3, MotorType.kBrushless);
+    /** Primary TalonSRX on right side. */
+    public static final TalonSRX rightTalon1 = new TalonSRX(CAN.RIGHT_TALON_1);
+    /** TalonSRX on right side, following {@link #rightTalon1}. */
+    public static final TalonSRX rightTalon2 = new TalonSRX(CAN.RIGHT_TALON_2);
+
+    /** First TalonSRX on the shooter prototype. */
+    public static final TalonSRX shooterTalon1 = new TalonSRX(CAN.SHOOTER_TALON_1);
+    /** Second TalonSRX on the shooter prototype. */
+    public static final TalonSRX shooterTalon2 = new TalonSRX(CAN.SHOOTER_TALON_2);
 
     /**
      * Initialise robot hardware. <br/>
@@ -51,10 +52,8 @@ public class RobotMap {
      */
     public static void init(){
         // Configure drive motor following
-        leftSpark2.follow(leftSpark1);
-        leftSpark3.follow(leftSpark1);
-
-        rightSpark2.follow(rightSpark1);
-        rightSpark3.follow(rightSpark1);
+        leftTalon2.follow(leftTalon1);
+        
+        rightTalon2.follow(rightTalon1);
     }
 }

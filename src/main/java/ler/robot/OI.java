@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.XboxController.Button;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import ler.robot.commands.ShootCommand;
 
 /**
  * Class containing drive team input devices.
@@ -26,6 +27,7 @@ public class OI {
 
         // Operator Bindings
         static final Button PRINT_BUTTON = Button.kA;
+        static final Button SHOOT_BUTTON = Button.kBumperLeft;
     }
 
     /* 
@@ -51,5 +53,7 @@ public class OI {
 
     /** Button to print a message (for demo purposes). Mapped to {@link Bindings#PRINT_BUTTON} */
     public static final JoystickButton printButton = new JoystickButton(controller, Bindings.PRINT_BUTTON.value);
+    /** Button to run the {@link ShootCommand}. Mapped to {@link Bindings#SHOOT_BUTTON} */
+    public static final JoystickButton shootButton = new JoystickButton(controller, Bindings.SHOOT_BUTTON.value);
 
 }
