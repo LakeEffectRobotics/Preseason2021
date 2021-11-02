@@ -37,6 +37,7 @@ public class DriveSlowCommand extends CommandBase  {
 		this.drivetrain = drivetrain;
 		this.leftInput = leftInput;
 		this.rightInput = rightInput;
+		this.multiplier = multiplier;
 	}
 
 	/**

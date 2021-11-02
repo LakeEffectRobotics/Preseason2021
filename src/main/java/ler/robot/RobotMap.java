@@ -16,14 +16,14 @@ public class RobotMap {
         private static final int LEFT_TALON_2 = 3;
         
         /** CAN ID of right talon 1. */
-        private static final int RIGHT_TALON_1 = 5;
+        private static final int RIGHT_TALON_1 = 4;
         /** CAN ID of right talon 2. */
-        private static final int RIGHT_TALON_2 = 6;
+        private static final int RIGHT_TALON_2 = 5;
 
         /** CAN ID of shooter talon 1. */
-        private static final int SHOOTER_TALON_1 = -1;
+        private static final int SHOOTER_TALON_1 = 6;
         /** CAN ID of shooter talon 2. */
-        private static final int SHOOTER_TALON_2 = -1;
+        private static final int SHOOTER_TALON_2 = 7;
     }
     
     /* 

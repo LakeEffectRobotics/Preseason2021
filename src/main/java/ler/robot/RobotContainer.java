@@ -33,7 +33,8 @@ public class RobotContainer {
     RobotMap.init();
 
     // Create the drivetrain
-    drivetrain = new Drivetrain(RobotMap.leftTalon1, RobotMap.rightTalon1, new DriveCommand(drivetrain, OI.leftStickY, OI.rightStickY));
+    drivetrain = new Drivetrain(RobotMap.leftTalon1, RobotMap.rightTalon1);
+    drivetrain.setDefaultCommand(new DriveCommand(drivetrain, OI.leftStickY, OI.rightStickY));
     shooter = new Shooter(RobotMap.shooterTalon1, RobotMap.shooterTalon2);
 
     // Initialise button mappings
