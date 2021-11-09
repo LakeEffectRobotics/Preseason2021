@@ -1,5 +1,7 @@
 package ler.robot.commands;
 
+import java.util.function.DoubleSupplier;
+
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import ler.robot.subsystems.Shooter;
 
@@ -13,16 +15,24 @@ public class ShootCommand extends CommandBase  {
 	 */
 	Shooter shooter;
 
+	/** Feed Input values */
+	DoubleSupplier feedInput;
+	/** Shoot Input values */
+	DoubleSupplier shootInput;
 
 	/**
 	 * Create a new ler.robot.commands.
 	 * 
 	 * @param shooter The shooter prototype
+	 * @param feedInput Double Supplier (lambda) for feeder input values
+	 * @param shootInput Double Supplier (lambda) for shooter input values
 	 */
-	public ShootCommand(Shooter shooter) {
+	public ShootCommand(Shooter shooter, DoubleSupplier feedInput, DoubleSupplier shootInput) {
 		addRequirements(shooter);
 		
 		this.shooter = shooter;
+		this.feedInput = feedInput;
+		this.shootInput = shootInput;
 	}
 
 	/**
@@ -31,8 +41,8 @@ public class ShootCommand extends CommandBase  {
 	 */
 	@Override
 	public void initialize() {
-		//TODO: Initialize subsystems
-		
+		//All Stop for safty
+		shooter.allStop();
 	}
 
 	/**
@@ -49,8 +59,8 @@ public class ShootCommand extends CommandBase  {
 	 */
 	@Override
 	public void end(boolean interrupted) {
-		//TODO: Cleanup subsystems
-		
+		//All Stop for safety
+		shooter.allStop();
 	}
 
 	/**

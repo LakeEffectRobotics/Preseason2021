@@ -29,7 +29,7 @@ public class DriveCommand extends CommandBase  {
 	 */
 	public DriveCommand(Drivetrain drivetrain, DoubleSupplier leftInput, DoubleSupplier rightInput) {
 		addRequirements(drivetrain);
-		
+
 		this.drivetrain = drivetrain;
 		this.leftInput = leftInput;
 		this.rightInput = rightInput;

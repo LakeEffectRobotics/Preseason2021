@@ -36,7 +36,7 @@ public class RobotContainer {
     drivetrain = new Drivetrain(RobotMap.leftTalon1, RobotMap.rightTalon1);
     drivetrain.setDefaultCommand(new DriveCommand(drivetrain, OI.leftStickY, OI.rightStickY));
     shooter = new Shooter(RobotMap.shooterTalon1, RobotMap.shooterTalon2);
-
+    shooter.setDefaultCommand(new ShootCommand(shooter, OI.leftOperatorTrigger, OI.rightOperatorTrigger));
     // Initialise button mappings
     initMappings();
   }
@@ -50,8 +50,6 @@ public class RobotContainer {
 
     // When print button is pressed, print message
     OI.printButton.whenPressed(new PrintCommand("Print button pressed!"));
-    // While shoot button is held run shoot command
-    OI.shootButton.whileHeld(new ShootCommand(shooter));
   }
 
 }
