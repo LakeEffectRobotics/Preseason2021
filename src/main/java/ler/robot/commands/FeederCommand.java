@@ -1,13 +1,12 @@
 package ler.robot.commands;
 
-
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import ler.robot.subsystems.Shooter;
 
 /**
  * Command that runs the shooter.
  */
-public class ShootCommand extends CommandBase  {
+public class FeederCommand extends CommandBase  {
 
 	/**
 	 * The shooter prototype.
@@ -20,7 +19,7 @@ public class ShootCommand extends CommandBase  {
 	 * 
 	 * @param shooter The shooter prototype
 	 */
-	public ShootCommand(Shooter shooter) {
+	public FeederCommand(Shooter shooter) {
 		addRequirements(shooter);
 		
 		this.shooter = shooter;
@@ -41,8 +40,8 @@ public class ShootCommand extends CommandBase  {
 	 */
 	@Override
 	public void execute() {
-		//TODO: Code that runs periodically while command is active
-		shooter.setShooterTalon(1);
+    //TODO: Code that runs periodically while command is active
+    shooter.setFeederTalon(0.05);
 	}
 
 	/**
@@ -52,7 +51,7 @@ public class ShootCommand extends CommandBase  {
 	@Override
 	public void end(boolean interrupted) {
 		//TODO: Cleanup subsystems
-		shooter.setShooterTalon(0);
+		shooter.setFeederTalon(0);
 	}
 
 	/**

@@ -7,6 +7,7 @@ package ler.robot;
 import edu.wpi.first.wpilibj2.command.PrintCommand;
 import ler.robot.commands.DriveCommand;
 import ler.robot.commands.DriveSlowCommand;
+import ler.robot.commands.FeederCommand;
 import ler.robot.commands.ShootCommand;
 import ler.robot.subsystems.Drivetrain;
 import ler.robot.subsystems.Shooter;
@@ -52,6 +53,7 @@ public class RobotContainer {
     OI.printButton.whenPressed(new PrintCommand("Print button pressed!"));
     // While shoot button is held run shoot command
     OI.shootButton.whileHeld(new ShootCommand(shooter));
+    OI.feederButton.whileHeld(new FeederCommand(shooter));
   }
 
 }

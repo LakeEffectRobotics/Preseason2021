@@ -28,6 +28,7 @@ public class OI {
         // Operator Bindings
         static final Button PRINT_BUTTON = Button.kA;
         static final Button SHOOT_BUTTON = Button.kBumperLeft;
+        static final Button FEEDER_BUTTON = Button.kBack;
     }
 
     /* 
@@ -55,5 +56,5 @@ public class OI {
     public static final JoystickButton printButton = new JoystickButton(controller, Bindings.PRINT_BUTTON.value);
     /** Button to run the {@link ShootCommand}. Mapped to {@link Bindings#SHOOT_BUTTON} */
     public static final JoystickButton shootButton = new JoystickButton(controller, Bindings.SHOOT_BUTTON.value);
-
+    public static final JoystickButton feederButton = new JoystickButton(controller, Bindings.FEEDER_BUTTON.value);
 }
