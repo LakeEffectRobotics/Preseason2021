@@ -27,7 +27,7 @@ public class ShootCommand extends CommandBase  {
 	 * @param feedInput Double Supplier (lambda) for feeder input values
 	 * @param shootInput Double Supplier (lambda) for shooter input values
 	 */
-	public ShootCommand(Shooter shooter, DoubleSupplier feedInput, DoubleSupplier shootInput) {
+	public ShootCommand(Shooter shooter, DoubleSupplier feedInput /** left operator trigger */ , DoubleSupplier shootInput /** right operator trigger */) {
 		addRequirements(shooter);
 		
 		this.shooter = shooter;
@@ -51,6 +51,7 @@ public class ShootCommand extends CommandBase  {
 	@Override
 	public void execute() {
 		//TODO: Code that runs periodically while command is active
+		//TODO: ie make the code the manage the shooters feed and fire speed
 	}
 
 	/**
