@@ -1,3 +1,4 @@
+
 package ler.robot.commands;
 
 import java.util.function.DoubleSupplier;
@@ -47,11 +48,42 @@ public class ShootCommand extends CommandBase  {
 
 	/**
 	 * Called once every 20ms (nominally).
+	 * 
+	 * Calls setFeedSpeed and setShootSpeed function from shooter.java and uses Xbox controller as the double value. 
+	 * 
+	 * Used to control the feeder speed and the Shooter speed based on how much the xbox button is being pressed.
+	 * 
+	 * 
 	 */
 	@Override
 	public void execute() {
-		//TODO: Code that runs periodically while command is active
-		//TODO: ie make the code the manage the shooters feed and fire speed
+		/**
+		 * 	░░░░░░░░░▄░░░░░░░░░░░░░░▄░░░░
+			░░░░░░░░▌▒█░░░░░░░░░░░▄▀▒▌░░░
+			░░░░░░░░▌▒▒█░░░░░░░░▄▀▒▒▒▐░░░
+			░░░░░░░▐▄▀▒▒▀▀▀▀▄▄▄▀▒▒▒▒▒▐░░░
+			░░░░░▄▄▀▒░▒▒▒▒▒▒▒▒▒█▒▒▄█▒▐░░░
+			░░░▄▀▒▒▒░░░▒▒▒░░░▒▒▒▀██▀▒▌░░░ 
+			░░▐▒▒▒▄▄▒▒▒▒░░░▒▒▒▒▒▒▒▀▄▒▒▌░░
+			░░▌░░▌█▀▒▒▒▒▒▄▀█▄▒▒▒▒▒▒▒█▒▐░░
+			░▐░░░▒▒▒▒▒▒▒▒▌██▀▒▒░░░▒▒▒▀▄▌░
+			░▌░▒▄██▄▒▒▒▒▒▒▒▒▒░░░░░░▒▒▒▒▌░
+			▀▒▀▐▄█▄█▌▄░▀▒▒░░░░░░░░░░▒▒▒▐░
+			▐▒▒▐▀▐▀▒░▄▄▒▄▒▒▒▒▒▒░▒░▒░▒▒▒▒▌
+			▐▒▒▒▀▀▄▄▒▒▒▄▒▒▒▒▒▒▒▒░▒░▒░▒▒▐░
+			░▌▒▒▒▒▒▒▀▀▀▒▒▒▒▒▒░▒░▒░▒░▒▒▒▌░
+			░▐▒▒▒▒▒▒▒▒▒▒▒▒▒▒░▒░▒░▒▒▄▒▒▐░░
+			░░▀▄▒▒▒▒▒▒▒▒▒▒▒░▒░▒░▒▄▒▒▒▒▌░░
+			░░░░▀▄▒▒▒▒▒▒▒▒▒▒▄▄▄▀▒▒▒▒▄▀░░░
+			░░░░░░▀▄▄▄▄▄▄▀▀▀▒▒▒▒▒▄▄▀░░░░░
+			░░░░░░░░░▒▒▒▒▒▒▒▒▒▒▀▀░░░░░░░░
+		 *  DO NOT REMOVE CODE WILL BREAK!!! DON'T QUESTION IT!!! ඞ
+		 */
+
+		
+
+		shooter.setFeedSpeed(feedInput.getAsDouble());
+		shooter.setShootSpeed(shootInput.getAsDouble());
 	}
 
 	/**

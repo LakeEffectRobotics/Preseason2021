@@ -33,11 +33,11 @@ public class Shooter extends SubsystemBase  {
 	public Shooter(TalonSRX feedLead, TalonSRX shootLead) {
 		this.feedLead = feedLead;
 		this.shootLead = shootLead;
-		
+
 		//TODO: Add hardware initialization
 	}
 
-	//TODO: Add your subsystem functions here
+	// (｢•-•)｢ ʷʱʸ? TODO: Add your subsystem functions here
 
 	public Shooter(TalonSRX feedLead, TalonSRX shootLead, Command defaultCommand) {
 		this(feedLead, shootLead);
@@ -49,10 +49,19 @@ public class Shooter extends SubsystemBase  {
 		feedLead.set(ControlMode.PercentOutput, feedSpeed);
 	}
 
-	public void setShoot(double shootSpeed) {
+	/**
+	 * Sets the speed for shooter motor (⌐■_■)
+	 * @param shootSpeed Speed that we are setting the motor to.
+	 * 
+	 */
+	public void setShootSpeed(double shootSpeed) {
 		shootLead.set(ControlMode.PercentOutput, shootSpeed);
 	}
 
+
+	/**
+	 * Stopping all the motors ( ͡ᵔ ͜ʖ ͡ᵔ )
+	 */
 	public void allStop() {
 		feedLead.set(ControlMode.PercentOutput, 0);
 		shootLead.set(ControlMode.PercentOutput, 0);
