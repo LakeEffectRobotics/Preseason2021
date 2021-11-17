@@ -15,5 +15,6 @@
     "**/*~": true
   },
   "java.checkstyle.version": "8.33",
-  "java.checkstyle.configuration": "${workspaceFolder}\\config\\checkstyle\\checkstyle.xml"
+  "java.checkstyle.configuration": "${workspaceFolder}\\config\\checkstyle\\checkstyle.xml",
+  "git.terminalAuthentication": false
 }
