@@ -1,5 +1,8 @@
 package ler.robot.commands;
 
+
+
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import ler.robot.subsystems.Shooter;
 
@@ -13,16 +16,23 @@ public class ShootCommand extends CommandBase  {
 	 */
 	Shooter shooter;
 
+	/** Limit Switches */
+	DigitalInput topLimitSwitch;
+	DigitalInput botLimitSwitch;
 
 	/**
 	 * Create a new ler.robot.commands.
 	 * 
 	 * @param shooter The shooter prototype
+	 * @param botLimitSwitch
+	 * @param topLimitSwitch
 	 */
-	public ShootCommand(Shooter shooter) {
+	public ShootCommand(Shooter shooter, DigitalInput topLimitSwitch, DigitalInput botLimitSwitch) {
 		addRequirements(shooter);
 		
 		this.shooter = shooter;
+		this.topLimitSwitch = topLimitSwitch;
+		this.botLimitSwitch = botLimitSwitch;
 	}
 
 	/**
@@ -32,6 +42,12 @@ public class ShootCommand extends CommandBase  {
 	@Override
 	public void initialize() {
 		//TODO: Initialize subsystems
+		double speed = 0.5;
+		if (topLimitSwitch.get()) {
+			shooter.setSpeed(speed);
+		} else if (botLimitSwitch.get()) {
+			shooter.setSpeed(-speed);
+		}
 		
 	}
 
@@ -41,6 +57,7 @@ public class ShootCommand extends CommandBase  {
 	@Override
 	public void execute() {
 		//TODO: Code that runs periodically while command is active
+
 	}
 
 	/**
@@ -49,7 +66,7 @@ public class ShootCommand extends CommandBase  {
 	 */
 	@Override
 	public void end(boolean interrupted) {
-		//TODO: Cleanup subsystems
+		shooter.setSpeed(0);
 		
 	}
 
@@ -58,7 +75,13 @@ public class ShootCommand extends CommandBase  {
 	 */
 	@Override
 	public boolean isFinished() {
-		return false;
+		if (topLimitSwitch.get()) {
+			return true;
+		} else if (botLimitSwitch.get()) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 }

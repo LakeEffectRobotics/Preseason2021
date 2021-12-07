@@ -2,6 +2,8 @@ package ler.robot;
 
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
+import edu.wpi.first.wpilibj.DigitalInput;
+
 /**
  * Map of hardware on robot.
  */
@@ -45,6 +47,10 @@ public class RobotMap {
     public static final TalonSRX shooterTalon1 = new TalonSRX(CAN.SHOOTER_TALON_1);
     /** Second TalonSRX on the shooter prototype. */
     public static final TalonSRX shooterTalon2 = new TalonSRX(CAN.SHOOTER_TALON_2);
+
+    public static final DigitalInput topLimitSwitch = new DigitalInput(1);
+
+	public static final DigitalInput botLimitSwitch = new DigitalInput(0);
 
     /**
      * Initialise robot hardware. <br/>
