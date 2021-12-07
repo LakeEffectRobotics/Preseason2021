@@ -52,7 +52,7 @@ public class RobotContainer {
     // When print button is pressed, print message
     OI.printButton.whenPressed(new PrintCommand("Print button pressed!"));
     // While shoot button is held run shoot command
-    OI.shootButton.whileHeld(new ShootCommand(shooter));
+    OI.shootButton.whileHeld(new ShootCommand(shooter, OI.shooterSpeedControlStick));
     OI.feederButton.whileHeld(new FeederCommand(shooter));
   }
 

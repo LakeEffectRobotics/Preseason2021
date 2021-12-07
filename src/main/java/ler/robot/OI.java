@@ -4,6 +4,7 @@ import java.util.function.DoubleSupplier;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.XboxController.Button;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import ler.robot.commands.ShootCommand;
@@ -48,6 +49,8 @@ public class OI {
     public static final DoubleSupplier leftStickY = () -> leftStick.getY();
     /** Drive controller's right stick value. */
     public static final DoubleSupplier rightStickY = () -> rightStick.getY();
+
+    public static final DoubleSupplier shooterSpeedControlStick = () -> controller.getY(Hand.kLeft);
 
     /** Button to drive at half speed. Mapped to {@link Bindings#HALF_SPEED_BUTTON} */
     public static final JoystickButton halfSpeedButton = new JoystickButton(leftStick, Bindings.HALF_SPEED_BUTTON);

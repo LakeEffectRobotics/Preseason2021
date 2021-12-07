@@ -1,6 +1,8 @@
 package ler.robot.commands;
 
 
+import java.util.function.DoubleSupplier;
+
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import ler.robot.subsystems.Shooter;
 
@@ -14,16 +16,20 @@ public class ShootCommand extends CommandBase  {
 	 */
 	Shooter shooter;
 
+	DoubleSupplier input;
+
 
 	/**
 	 * Create a new ler.robot.commands.
 	 * 
 	 * @param shooter The shooter prototype
+	 * @param input The input power
 	 */
-	public ShootCommand(Shooter shooter) {
+	public ShootCommand(Shooter shooter, DoubleSupplier input) {
 		addRequirements(shooter);
 		
 		this.shooter = shooter;
+		this.input = input;
 	}
 
 	/**
@@ -42,7 +48,7 @@ public class ShootCommand extends CommandBase  {
 	@Override
 	public void execute() {
 		//TODO: Code that runs periodically while command is active
-		shooter.setShooterTalon(1);
+		shooter.setShooterTalon(input.getAsDouble());
 	}
 
 	/**
