@@ -1,38 +1,34 @@
 package ler.robot.commands;
 
-
-
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import ler.robot.subsystems.Shooter;
+import ler.robot.subsystems.Gate;
+import ler.robot.subsystems.GateState;
 
 /**
  * Command that runs the shooter.
  */
-public class ShootCommand extends CommandBase  {
+public class CloseGateCommand extends CommandBase  {
 
 	/**
 	 * The shooter prototype.
 	 */
-	Shooter shooter;
+	Gate gate;
 
 	/** Limit Switches */
 	DigitalInput topLimitSwitch;
 	DigitalInput botLimitSwitch;
 
+	static double GATESPEED = 0.5;
 	/**
 	 * Create a new ler.robot.commands.
 	 * 
-	 * @param shooter The shooter prototype
-	 * @param botLimitSwitch
-	 * @param topLimitSwitch
+	 * @param gate The shooter prototype
 	 */
-	public ShootCommand(Shooter shooter, DigitalInput topLimitSwitch, DigitalInput botLimitSwitch) {
-		addRequirements(shooter);
+	public CloseGateCommand(Gate gate) {
+		addRequirements(gate);
 		
-		this.shooter = shooter;
-		this.topLimitSwitch = topLimitSwitch;
-		this.botLimitSwitch = botLimitSwitch;
+		this.gate = gate;
 	}
 
 	/**
@@ -41,14 +37,20 @@ public class ShootCommand extends CommandBase  {
 	 */
 	@Override
 	public void initialize() {
-		//TODO: Initialize subsystems
-		double speed = 0.5;
-		if (topLimitSwitch.get()) {
-			shooter.setSpeed(speed);
-		} else if (botLimitSwitch.get()) {
-			shooter.setSpeed(-speed);
+	
+		GateState  initialState =  gate.getGateState();
+
+		// if the gate is open or partially open, close it when we start
+		switch(initialState)
+		{
+			case OPEN: 
+			case PARTIAL:
+				gate.closeGate(GATESPEED);
+				break;
+			case CLOSED:
+			case BAD:
+				// do nothing
 		}
-		
 	}
 
 	/**
@@ -65,23 +67,27 @@ public class ShootCommand extends CommandBase  {
 	 * @param interrupted Flag indicating if the command was interrupted
 	 */
 	@Override
-	public void end(boolean interrupted) {
-		shooter.setSpeed(0);
-		
+	public void end(boolean interrupted) {	
+		gate.stopGate();
 	}
 
 	/**
 	 * Called to check command status, command will end if this returns true.
+	 * Once the gate hits the lower limit switch we have closed
 	 */
 	@Override
 	public boolean isFinished() {
-		if (topLimitSwitch.get()) {
-			return true;
-		} else if (botLimitSwitch.get()) {
-			return true;
-		} else {
-			return false;
-		}
+
+
+		GateState limitHit = gate.getGateState();
+		boolean bFinished;
+		if(limitHit == GateState.CLOSED)
+			bFinished = true;
+		else
+			bFinished = false;
+
+		return bFinished;
 	}
+
 
 }

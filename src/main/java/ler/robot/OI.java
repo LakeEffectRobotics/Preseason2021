@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.XboxController.Button;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-import ler.robot.commands.ShootCommand;
+import ler.robot.commands.CloseGateCommand;
 
 /**
  * Class containing drive team input devices.
@@ -17,8 +17,7 @@ public class OI {
      * Controller bindings.
      */
     private static class Bindings {
-        static final int LEFT_STICK_PORT = 0;
-        static final int RIGHT_STICK_PORT = 1;
+
         static final int CONTROLLER_PORT = 2;
         static final int DRIVER_CONTROLLER_PORT = 3;
 
@@ -29,7 +28,8 @@ public class OI {
 
         // Operator Bindings
         static final Button PRINT_BUTTON = Button.kA;
-        static final Button SHOOT_BUTTON = Button.kBumperLeft;
+        static final Button OPEN_GATE_BUTTON = Button.kBumperLeft;
+        static final Button CLOSE_GATE_BUTTON = Button.kBumperRight;
     }
 
     /* 
@@ -37,10 +37,6 @@ public class OI {
      * CHECKSTYLE OFF: ConstantNameCheck 
      */
 
-    /** Joystick for left side of robot. Mapped to {@link Bindings#LEFT_STICK_PORT} */
-    private static final Joystick leftStick = new Joystick(Bindings.LEFT_STICK_PORT);
-    /** Joystick for right side of robot. Mapped to {@link Bindings#RIGHT_STICK_PORT} */
-    private static final Joystick rightStick = new Joystick(Bindings.RIGHT_STICK_PORT);
     /** Xbox controller for operator controls. Mapped to {@link Bindings#CONTROLLER_PORT}*/
     private static final XboxController controller = new XboxController(Bindings.CONTROLLER_PORT);
     
@@ -57,8 +53,10 @@ public class OI {
 
     /** Button to print a message (for demo purposes). Mapped to {@link Bindings#PRINT_BUTTON} */
     public static final JoystickButton printButton = new JoystickButton(controller, Bindings.PRINT_BUTTON.value);
-    /** Button to run the {@link ShootCommand}. Mapped to {@link Bindings#SHOOT_BUTTON} */
-    public static final JoystickButton shootButton = new JoystickButton(controller, Bindings.SHOOT_BUTTON.value);
+    /** Button to run the {@link CloseGateCommand}. Mapped to {@link Bindings#OPEN_GATE_BUTTON} */
+    public static final JoystickButton openGateButton = new JoystickButton(controller, Bindings.OPEN_GATE_BUTTON.value);
+    /** Button to run the {@link CloseGateCommand}. Mapped to {@link Bindings#CLOSE_GATE_BUTTON} */
+    public static final JoystickButton closeGateButton = new JoystickButton(controller, Bindings.CLOSE_GATE_BUTTON.value);
 
 
 
