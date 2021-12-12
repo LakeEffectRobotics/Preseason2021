@@ -14,9 +14,8 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
  */
 public class Gate extends SubsystemBase  {
 
-	//TODO: Rename talons based on how they are used
 	/**
-	 * The first talon.
+	 * The motor for the gate.
 	 */
 	TalonSRX gateMotor;
 
@@ -25,13 +24,10 @@ public class Gate extends SubsystemBase  {
 	DigitalInput topLimitSwitch;
 
 
-
-
-	// TODO: Update descriptions of talons based on how they are used
 	/**
 	 * Create a new Shooter.
 	 * 
-	 * @param gateMotor The first talon
+	 * @param gateMotor The motor for the gate
 	 * @param botLimitSwitch The bottom limit switch
 	 * @param topLimitSwitch The top limit switch
 	 */
@@ -40,7 +36,6 @@ public class Gate extends SubsystemBase  {
 		this.botLimitSwitch = botLimitSwitch;
 		this.topLimitSwitch = topLimitSwitch;
 		
-		//TODO: Add hardware initialization
 	}
 
 	//All of our subsystem functions are here

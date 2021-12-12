@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj2.command.PrintCommand;
 import ler.robot.commands.DriveCommand;
 import ler.robot.commands.DriveSlowCommand;
 import ler.robot.commands.CloseGateCommand;
+import ler.robot.commands.OpenGateCommand;
 import ler.robot.subsystems.Drivetrain;
 import ler.robot.subsystems.Gate;
 
@@ -35,6 +36,7 @@ public class RobotContainer {
     // Create the drivetrain
     drivetrain = new Drivetrain(RobotMap.leftTalon1, RobotMap.rightTalon1);
     drivetrain.setDefaultCommand(new DriveCommand(drivetrain, OI.leftStickY, OI.rightStickY));
+    
     gate = new Gate(RobotMap.gateMotor, RobotMap.topLimitSwitch, RobotMap.botLimitSwitch);
 
     // Initialise button mappings
@@ -50,8 +52,10 @@ public class RobotContainer {
 
     // When print button is pressed, print message
     OI.printButton.whenPressed(new PrintCommand("Print button pressed!"));
-    // While shoot button is held run shoot command
-    OI.openGateButton.whenPressed(new CloseGateCommand(gate));
+    // While left bumper button is held open the gate
+    OI.openGateButton.whenPressed(new OpenGateCommand(gate));
+    // While right bumper button is held open the gate
+    OI.closeGateButton.whenPressed(new CloseGateCommand(gate));
   }
 
 }
