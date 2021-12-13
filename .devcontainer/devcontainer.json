@@ -1,0 +1,26 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.205.2/containers/java
+{
+	"name": "LER-Training",
+	"image": "gregk27/ler-programming:2021",
+
+	"extensions": [
+		"wpilibsuite.vscode-wpilib@2021.1.2",
+		"vscjava.vscode-java-pack",
+		"eamodio.gitlens",
+		"shengchen.vscode-checkstyle",
+		"gregk.botbuilder",
+	],
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+
+	// Make the gradle warpper executable when creating the container
+	"postCreateCommand": ["chmod", "+x", "./gradlew"],
+
+	// Rebuild when opening the container
+	"postStartCommand": ["./gradlew", "build"]
+
+	// Comment out connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
+	// "remoteUser": "vscode"
+}
