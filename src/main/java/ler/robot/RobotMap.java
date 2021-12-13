@@ -1,6 +1,6 @@
 package ler.robot;
 
-import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 /**
  * Map of hardware on robot.
@@ -32,19 +32,19 @@ public class RobotMap {
      */
 
     /** Primary TalonSRX on left side. */
-    public static final TalonSRX leftTalon1 = new TalonSRX(CAN.LEFT_TALON_1);
+    public static final WPI_TalonSRX leftTalon1 = new WPI_TalonSRX(CAN.LEFT_TALON_1);
     /** TalonSRX on left side, following {@link #leftTalon1}. */
-    public static final TalonSRX leftTalon2 = new TalonSRX(CAN.LEFT_TALON_2);
+    public static final WPI_TalonSRX leftTalon2 = new WPI_TalonSRX(CAN.LEFT_TALON_2);
     
     /** Primary TalonSRX on right side. */
-    public static final TalonSRX rightTalon1 = new TalonSRX(CAN.RIGHT_TALON_1);
+    public static final WPI_TalonSRX rightTalon1 = new WPI_TalonSRX(CAN.RIGHT_TALON_1);
     /** TalonSRX on right side, following {@link #rightTalon1}. */
-    public static final TalonSRX rightTalon2 = new TalonSRX(CAN.RIGHT_TALON_2);
+    public static final WPI_TalonSRX rightTalon2 = new WPI_TalonSRX(CAN.RIGHT_TALON_2);
 
     /** First TalonSRX on the shooter prototype. */
-    public static final TalonSRX shooterTalon1 = new TalonSRX(CAN.SHOOTER_TALON_1);
+    public static final WPI_TalonSRX shooterTalon1 = new WPI_TalonSRX(CAN.SHOOTER_TALON_1);
     /** Second TalonSRX on the shooter prototype. */
-    public static final TalonSRX shooterTalon2 = new TalonSRX(CAN.SHOOTER_TALON_2);
+    public static final WPI_TalonSRX shooterTalon2 = new WPI_TalonSRX(CAN.SHOOTER_TALON_2);
 
     /**
      * Initialise robot hardware. <br/>
