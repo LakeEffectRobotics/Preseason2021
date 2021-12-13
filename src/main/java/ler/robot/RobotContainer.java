@@ -39,6 +39,11 @@ public class RobotContainer {
 
     // Initialise button mappings
     initMappings();
+
+    // Simulation-specific initialization
+    if(Robot.isSimulation()){
+      SimContainer.init(this);
+    }
   }
 
   /**
