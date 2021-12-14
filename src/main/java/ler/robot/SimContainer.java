@@ -19,7 +19,7 @@ public class SimContainer {
 
     /**
      * Create a new SimContainer, should only be called in simulation conditions.
-     * @param rc RobotContainer with subsystems to simulate
+     * @param r RobotContainer with subsystems to simulate
      */
     public static void init(RobotContainer r){
         // Do not run this code on a real robot. It may cause lag and will break things
