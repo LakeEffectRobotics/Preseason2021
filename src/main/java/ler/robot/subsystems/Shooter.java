@@ -36,16 +36,28 @@ public class Shooter extends SubsystemBase  {
 	}
 
 	//TODO: Add your subsystem functions here
+	
+	/**
+	 * Set the shooter's speed.
+	 * @param speed Percent output for talon
+	 */
 	public void setShooterTalon(double speed){
 		shooterTalon.set(ControlMode.PercentOutput, speed);
 
 	}
 
+	/**
+	 * Set the feeder's speed.
+	 * @param speed Percent output for talon
+	 */
 	public void setFeederTalon(double speed){
 		feederTalon.set(ControlMode.PercentOutput, speed);
 
 	}
 
+	/**
+	 * Stop the shooter and feeder.
+	 */
 	public void stop(){
 		feederTalon.set(ControlMode.PercentOutput, 0);
 		shooterTalon.set(ControlMode.PercentOutput, 0);
