@@ -1,6 +1,8 @@
 package ler.robot.subsystems;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import ler.robot.SimContainer;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
@@ -61,6 +63,15 @@ public class Shooter extends SubsystemBase  {
 	public void stop(){
 		feederTalon.set(ControlMode.PercentOutput, 0);
 		shooterTalon.set(ControlMode.PercentOutput, 0);
+	}
+
+	@Override
+	public void simulationPeriodic(){
+		SimContainer.shooterSim.setInputVoltage(shooterTalon.getMotorOutputPercent()*SimContainer.OUTPUT_VOLTAGE);
+		SimContainer.shooterSim.update(SimContainer.DT);
+
+		SmartDashboard.putNumber("Flywheel RPM", SimContainer.shooterSim.getAngularVelocityRPM());
+		SmartDashboard.putNumber("Flywheel Current", SimContainer.shooterSim.getCurrentDrawAmps());
 	}
 
 }
