@@ -2,9 +2,10 @@ package ler.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import ler.robot.SimContainer;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 /**
  * Subsystem representing the robot's drivetrain.
@@ -14,11 +15,11 @@ public class Drivetrain extends SubsystemBase  {
 	/**
 	 * Lead TalonSRX on left side.
 	 */
-	TalonSRX leftLead;
+	WPI_TalonSRX leftLead;
 	/**
 	 * Lead TalonSRX on right side.
 	 */
-	TalonSRX rightLead;
+	WPI_TalonSRX rightLead;
 
 
 	/**
@@ -27,7 +28,7 @@ public class Drivetrain extends SubsystemBase  {
 	 * @param leftLead Lead TalonSRX on left side
 	 * @param rightLead Lead TalonSRX on right side
 	 */
-	public Drivetrain(TalonSRX leftLead, TalonSRX rightLead) {
+	public Drivetrain(WPI_TalonSRX leftLead, WPI_TalonSRX rightLead) {
 		this.leftLead = leftLead;
 		this.rightLead = rightLead;
 	}
@@ -39,7 +40,7 @@ public class Drivetrain extends SubsystemBase  {
 	 * @param rightLead Lead TalonSRX on right side
 	 * @param defaultCommand Default command
 	 */
-	public Drivetrain(TalonSRX leftLead, TalonSRX rightLead, Command defaultCommand){
+	public Drivetrain(WPI_TalonSRX leftLead, WPI_TalonSRX rightLead, Command defaultCommand){
 		this(leftLead, rightLead);
 
 		setDefaultCommand(defaultCommand);
@@ -61,5 +62,14 @@ public class Drivetrain extends SubsystemBase  {
 	public void stop(){
 		leftLead.set(ControlMode.PercentOutput, 0);
 		rightLead.set(ControlMode.PercentOutput, 0);
+	}
+
+	@Override
+	public void simulationPeriodic(){
+		// Invert values to account for differences between hardware and simulation
+		SimContainer.driveSim.setInputs(-leftLead.getMotorOutputPercent()*12, -rightLead.getMotorOutputPercent()*12);
+		SimContainer.driveSim.update(0.02);
+
+		SimContainer.field.setRobotPose(SimContainer.driveSim.getPose());
 	}
 }

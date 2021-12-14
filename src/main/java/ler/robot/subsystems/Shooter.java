@@ -3,7 +3,7 @@ package ler.robot.subsystems;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 /**
  * Subsystem representing the shooter prototype.
@@ -14,11 +14,11 @@ public class Shooter extends SubsystemBase  {
 	/**
 	 * The first talon.
 	 */
-	TalonSRX feederTalon;
+	WPI_TalonSRX feederTalon;
 	/**
 	 * The second talon.
 	 */
-	TalonSRX shooterTalon;
+	WPI_TalonSRX shooterTalon;
 
 
 	// TODO: Update descriptions of talons based on how they are used
@@ -28,7 +28,7 @@ public class Shooter extends SubsystemBase  {
 	 * @param feederTalon Talon that controls feeder wheel
 	 * @param shooterTalon Talon that controls shooter wheel
 	 */
-	public Shooter(TalonSRX feederTalon, TalonSRX shooterTalon) {
+	public Shooter(WPI_TalonSRX feederTalon, WPI_TalonSRX shooterTalon) {
 		this.feederTalon = feederTalon;
 		this.shooterTalon = shooterTalon;
 		
