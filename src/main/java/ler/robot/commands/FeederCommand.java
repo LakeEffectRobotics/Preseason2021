@@ -20,7 +20,7 @@ public class FeederCommand extends CommandBase  {
 	 * @param shooter The shooter prototype
 	 */
 	public FeederCommand(Shooter shooter) {
-		addRequirements(shooter);
+		// addRequirements(shooter);
 		
 		this.shooter = shooter;
 	}

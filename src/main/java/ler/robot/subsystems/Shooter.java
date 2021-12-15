@@ -79,6 +79,7 @@ public class Shooter extends SubsystemBase  {
 		SmartDashboard.putNumber("Feeder Voltage", feederTalon.getMotorOutputPercent()*feederTalon.getBusVoltage());
 
 		SimContainer.currentDraw.put("flywheel", SimContainer.shooterSim.getCurrentDrawAmps());
+		SimContainer.currentDraw.put("feeder", feederTalon.getMotorOutputPercent()==0 ? 0d : 30d);
 	}
 
 }

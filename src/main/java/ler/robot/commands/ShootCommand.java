@@ -26,7 +26,7 @@ public class ShootCommand extends CommandBase  {
 	 * @param input The input power
 	 */
 	public ShootCommand(Shooter shooter, DoubleSupplier input) {
-		addRequirements(shooter);
+		// addRequirements(shooter);
 		
 		this.shooter = shooter;
 		this.input = input;
