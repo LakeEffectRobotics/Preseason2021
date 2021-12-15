@@ -20,10 +20,10 @@ import ler.robot.subsystems.Shooter;
 public class RobotContainer {
 
   /** The robot's drivetrain. */
-  private Drivetrain drivetrain;
+  protected Drivetrain drivetrain;
   
   /** The prototype shooter. */
-  private Shooter shooter;
+  protected Shooter shooter;
 
   /** 
    * The container for the robot. Contains subsystems and commands.

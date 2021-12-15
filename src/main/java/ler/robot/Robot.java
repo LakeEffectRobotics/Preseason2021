@@ -26,7 +26,11 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
-    container = new RobotContainer();
+    if(Robot.isSimulation()){
+      container = new SimContainer();
+    } else {
+      container = new RobotContainer();
+    }
   }
 
   /**
@@ -80,16 +84,5 @@ public class Robot extends TimedRobot {
   /** This function is called periodically during test mode. */
   @Override
   public void testPeriodic() {}
-
-  @Override
-  public void simulationInit() {
-    SimContainer.init();
-  }
-
-  /** This function is called periodically during simulation. */
-  @Override
-  public void simulationPeriodic() {
-    SimContainer.periodic();
-  }
 
 }

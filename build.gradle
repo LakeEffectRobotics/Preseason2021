@@ -27,6 +27,15 @@ repositories {
     }
 }
 
+sourceSets {
+    main {
+        java {
+            srcDirs "src/main/java"
+            srcDirs "src/sim/java"
+        }
+    }
+}
+
 sourceCompatibility = JavaVersion.VERSION_11
 targetCompatibility = JavaVersion.VERSION_11
 

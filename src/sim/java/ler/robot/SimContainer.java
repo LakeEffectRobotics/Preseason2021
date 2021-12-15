@@ -12,17 +12,22 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * This class should only be used in simulation-specific areas, as it will not
  *  be initialized during real robot operation.
  */
-public class SimContainer {
+public class SimContainer extends RobotContainer {
 
-    public static Field2d field;
+    public Field2d field;
     public static DifferentialDrivetrainSim driveSim;
 
     /**
      * Create a new SimContainer, should only be called in simulation conditions.
      */
-    public static void init(){
+    public SimContainer(){
+        // Initialise the standard robot container
+        super();
+
         // Do not run this code on a real robot. It may cause lag and will break things
-        if(Robot.isReal()) return;
+        if(Robot.isReal()){
+            throw new IllegalStateException("Cannot run simulation code on real hardware.");
+        }
 
         System.out.println("Initializing simulation container");
 
@@ -39,9 +44,11 @@ public class SimContainer {
     /**
      * Function called periodically during simulation.
      */
-    public static void periodic(){
+    public void periodic(){
         // Do not run this code on a real robot. It may cause lag and will break things
-        if(Robot.isReal()) return;
+        if(Robot.isReal()){
+            throw new IllegalStateException("Cannot run simulation code on real hardware.");
+        }
 
     }
 }

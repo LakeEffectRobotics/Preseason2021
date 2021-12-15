@@ -2,7 +2,6 @@ package ler.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import ler.robot.SimContainer;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
@@ -67,9 +66,9 @@ public class Drivetrain extends SubsystemBase  {
 	@Override
 	public void simulationPeriodic(){
 		// Invert values to account for differences between hardware and simulation
-		SimContainer.driveSim.setInputs(-leftLead.getMotorOutputPercent()*12, -rightLead.getMotorOutputPercent()*12);
-		SimContainer.driveSim.update(0.02);
+		// SimContainer.driveSim.setInputs(-leftLead.getMotorOutputPercent()*12, -rightLead.getMotorOutputPercent()*12);
+		// SimContainer.driveSim.update(0.02);
 
-		SimContainer.field.setRobotPose(SimContainer.driveSim.getPose());
+		// SimContainer.field.setRobotPose(SimContainer.driveSim.getPose());
 	}
 }
