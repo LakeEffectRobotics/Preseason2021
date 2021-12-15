@@ -1,5 +1,6 @@
 package ler.robot.subsystems;
 
+import edu.wpi.first.wpilibj.RobotController;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import ler.robot.SimContainer;
@@ -67,11 +68,17 @@ public class Shooter extends SubsystemBase  {
 
 	@Override
 	public void simulationPeriodic(){
-		SimContainer.shooterSim.setInputVoltage(shooterTalon.getMotorOutputPercent()*SimContainer.OUTPUT_VOLTAGE);
+		shooterTalon.getSimCollection().setBusVoltage(RobotController.getInputVoltage());
+		feederTalon.getSimCollection().setBusVoltage(RobotController.getInputVoltage());
+
+		SimContainer.shooterSim.setInputVoltage(shooterTalon.getMotorOutputPercent()*shooterTalon.getBusVoltage());
 		SimContainer.shooterSim.update(SimContainer.DT);
 
 		SmartDashboard.putNumber("Flywheel RPM", SimContainer.shooterSim.getAngularVelocityRPM());
 		SmartDashboard.putNumber("Flywheel Current", SimContainer.shooterSim.getCurrentDrawAmps());
+		SmartDashboard.putNumber("Feeder Voltage", feederTalon.getMotorOutputPercent()*feederTalon.getBusVoltage());
+
+		SimContainer.currentDraw.put("flywheel", SimContainer.shooterSim.getCurrentDrawAmps());
 	}
 
 }
