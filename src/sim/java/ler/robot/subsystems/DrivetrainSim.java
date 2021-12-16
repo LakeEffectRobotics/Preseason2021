@@ -32,10 +32,18 @@ public class DrivetrainSim extends SubsystemSim<Drivetrain> {
 
     @Override
     public void simPeriodic(SimContainer sc, double dt) {
-        sim.setInputs(-system.leftLead.getMotorOutputPercent()*12, -system.rightLead.getMotorOutputPercent()*12);
+        system.leftLead.getSimCollection().setBusVoltage(sc.battVoltage);
+        system.rightLead.getSimCollection().setBusVoltage(sc.battVoltage);
+
+        sim.setInputs(-system.leftLead.getMotorOutputVoltage(), -system.rightLead.getMotorOutputVoltage());
 		sim.update(dt);
 
 		sc.field.setRobotPose(sim.getPose());
+    }
+
+    @Override
+    public double getCurrentDraw() {
+        return sim.getCurrentDrawAmps();
     }
     
 }

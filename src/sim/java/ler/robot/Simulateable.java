@@ -13,6 +13,16 @@ public interface Simulateable extends Sendable {
      * @param dt DeltaTime for simulation computations
      */
     public void simPeriodic(SimContainer sc, double dt);
+
+    /**
+     * Get the current draw of the represented hardware.
+     * This value is used in battery voltage calculations
+     * By default, this will return 0 amps
+     * @return Current draw in amps
+     */
+    default double getCurrentDraw(){
+        return 0;
+    }
     
     @Override
     default void initSendable(SendableBuilder builder) {}
