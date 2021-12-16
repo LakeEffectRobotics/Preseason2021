@@ -1,11 +1,11 @@
 package ler.robot;
 
-import edu.wpi.first.wpilibj.simulation.DifferentialDrivetrainSim;
-import edu.wpi.first.wpilibj.simulation.DifferentialDrivetrainSim.KitbotGearing;
-import edu.wpi.first.wpilibj.simulation.DifferentialDrivetrainSim.KitbotMotor;
-import edu.wpi.first.wpilibj.simulation.DifferentialDrivetrainSim.KitbotWheelSize;
+import java.util.ArrayList;
+
 import edu.wpi.first.wpilibj.smartdashboard.Field2d;
+import edu.wpi.first.wpilibj.smartdashboard.SendableRegistry;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import ler.robot.subsystems.DrivetrainSim;
 
 /**
  * Container for components used in simulation.
@@ -14,8 +14,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class SimContainer extends RobotContainer {
 
-    public Field2d field;
-    public static DifferentialDrivetrainSim driveSim;
+    public Field2d field = new Field2d();
+
+    ArrayList<Simulateable> sims = new ArrayList<>();
 
     /**
      * Create a new SimContainer, should only be called in simulation conditions.
@@ -31,14 +32,18 @@ public class SimContainer extends RobotContainer {
 
         System.out.println("Initializing simulation container");
 
-        // Initialize sim outputs
-        driveSim = DifferentialDrivetrainSim.createKitbotSim(
-            KitbotMotor.kDualCIMPerSide, 
-            KitbotGearing.k10p71, //TODO: Use real 
-            KitbotWheelSize.SixInch,
-            null);
-        field = new Field2d();
+        // Convert drivetrain to simulation wrapper
+        SendableRegistry.remove(drivetrain);
+        sims.add(new DrivetrainSim(drivetrain));
+
+        // Re-initialise mappings to updated subsystems
+        initMappings();
+
+        // Setup dashboard
         SmartDashboard.putData("Field", field);
+        for(Simulateable s : sims){
+            SendableRegistry.addLW(s, s.getClass().getSimpleName(), s.getClass().getSimpleName());
+        }
     }
 
     /**
@@ -50,5 +55,9 @@ public class SimContainer extends RobotContainer {
             throw new IllegalStateException("Cannot run simulation code on real hardware.");
         }
 
+        for(Simulateable s : sims){
+            // TODO: Calculate dt properly
+            s.simPeriodic(this, 0.02);
+        }
     }
 }

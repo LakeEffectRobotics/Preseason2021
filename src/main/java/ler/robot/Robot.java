@@ -85,4 +85,10 @@ public class Robot extends TimedRobot {
   @Override
   public void testPeriodic() {}
 
+  @Override
+  public void simulationPeriodic(){
+    if(container instanceof SimContainer){
+      ((SimContainer) container).periodic();
+    }
+  }
 }

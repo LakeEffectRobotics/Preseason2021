@@ -44,7 +44,7 @@ public class RobotContainer {
   /**
    * Initialise IO mappings.
    */
-  private void initMappings(){
+  protected void initMappings(){
     // When bumper is held, drive at 50% speed
     OI.halfSpeedButton.whileHeld(new DriveSlowCommand(drivetrain, OI.leftStickY, OI.rightStickY, 0.5));
 

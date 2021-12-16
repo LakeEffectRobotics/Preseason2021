@@ -63,12 +63,4 @@ public class Drivetrain extends SubsystemBase  {
 		rightLead.set(ControlMode.PercentOutput, 0);
 	}
 
-	@Override
-	public void simulationPeriodic(){
-		// Invert values to account for differences between hardware and simulation
-		// SimContainer.driveSim.setInputs(-leftLead.getMotorOutputPercent()*12, -rightLead.getMotorOutputPercent()*12);
-		// SimContainer.driveSim.update(0.02);
-
-		// SimContainer.field.setRobotPose(SimContainer.driveSim.getPose());
-	}
 }
