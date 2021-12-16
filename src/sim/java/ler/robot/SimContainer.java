@@ -33,7 +33,6 @@ public class SimContainer extends RobotContainer {
         System.out.println("Initializing simulation container");
 
         // Convert drivetrain to simulation wrapper
-        SendableRegistry.remove(drivetrain);
         sims.add(new DrivetrainSim(drivetrain));
 
         // Re-initialise mappings to updated subsystems
