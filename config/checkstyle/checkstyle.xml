@@ -66,7 +66,7 @@
             <!-- This may need to be removed -->
             <module name="MagicNumber">
                 <property name="severity" value="warning"/>
-                <property name="ignoreNumbers" value="-360,-2,-1,-0.5,-0.25,0,0.25,0.5,1,2,360"/>
+                <property name="ignoreNumbers" value="-360,-2,-1,-0.5,-0.25,0,0.25,0.5,1,2,360,10,100,1000"/>
                 <property name="ignoreFieldDeclaration" value="true"/>
                 <message key="magic.number" value="''{0}'' is a magic number, and should have a dedicated constant."/>
             </module>

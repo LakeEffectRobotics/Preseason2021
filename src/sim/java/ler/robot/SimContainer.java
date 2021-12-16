@@ -18,6 +18,8 @@ import ler.robot.subsystems.DrivetrainSim;
  */
 public class SimContainer extends RobotContainer implements Sendable {
 
+    private long lastTime;
+
     public Field2d field = new Field2d();
 
     ArrayList<Simulateable> sims = new ArrayList<>();
@@ -65,15 +67,15 @@ public class SimContainer extends RobotContainer implements Sendable {
         battCurrent = 0;
         double[] currents = new double[sims.size()];
 
+        double dt = (System.currentTimeMillis()-lastTime)/1000d;
         for(int i=0; i<sims.size(); i++){
-            // TODO: Calculate dt properly
             Simulateable s = sims.get(i);
-            s.simPeriodic(this, 0.02);
+            s.simPeriodic(this, dt);
             
             battCurrent += s.getCurrentDraw();
             currents[i] = s.getCurrentDraw();
         }
-
+        lastTime = System.currentTimeMillis();
 
         battVoltage = BatterySim.calculateDefaultBatteryLoadedVoltage(currents);
         RoboRioSim.setVInVoltage(battVoltage);
